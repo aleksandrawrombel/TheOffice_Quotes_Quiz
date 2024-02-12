@@ -33,7 +33,7 @@ const Start = ({ setName }) => {
           </div>
           <form className="flex flex-col justify-center items-center h-[10rem]" onSubmit={handleGameStart}>
             <input
-              className="p-3 m-5 bg-office_gray border-black border-solid border-2 rounded-xl font-semibold text-l w-60 md:flex justify-center text-center"
+              className="p-3 m-5 bg-office_gray border-black border-solid border-2 rounded-xl font-semibold text-l w-60 md:flex justify-center text-center focus:outline-none"
               placeholder="Enter your name"
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}

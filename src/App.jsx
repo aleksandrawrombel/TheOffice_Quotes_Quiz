@@ -7,7 +7,6 @@ const App = () => {
 
     const [username, setUsername] = useState("");
 
-
   return (
     <>
       <Header />

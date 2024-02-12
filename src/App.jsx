@@ -4,10 +4,14 @@ import Footer from './components/Footer';
 import Start from './components/Start';
 
 const App = () => {
+
+    const [username, setUsername] = useState("");
+
+
   return (
     <>
       <Header />
-      <Start />
+      <Start setName={setUsername} />
       <Footer />
     </>
   );

@@ -1,1 +1,12 @@
-import { createRoot } from 'react-dom/client';
+import React, {useState} from 'react';
+import Header from './components/Header';
+
+const App = () => {
+    return (
+        <>
+        <Header />
+        </>
+    )
+}
+
+export default App;

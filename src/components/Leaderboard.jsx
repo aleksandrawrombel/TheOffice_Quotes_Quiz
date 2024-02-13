@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-const Leaderboard = () => {
+const Leaderboard = ({score}) => {
     return (
-        <div>Score!</div>
+        <div>{score}</div>
     )
 };
 

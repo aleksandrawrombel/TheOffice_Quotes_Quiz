@@ -8,7 +8,7 @@ const Quiz = ({ time }) => {
   const [incorrectOptions, setIncorrectOptions] = useState([]);
   const [randomOption, setRandomOption] = useState([]);
   const [score, setScore] = useState(0);
-  const [disabledButtons, setDisabledButtons] = useState(false);
+  // const [disabledButtons, setDisabledButtons] = useState(false);
   const [timer, setTimer] = useState(time);
   const [quizFinished, isQuizFinished] = useState(false);
 
@@ -31,7 +31,7 @@ const Quiz = ({ time }) => {
         if (response && response.quote.length <= 200) {
           setQuote(response);
           createIncorrectOptions(response.character);
-          setDisabledButtons(false);
+          // setDisabledButtons(false);
         } else {
           fetchQuote();
         }
@@ -61,7 +61,7 @@ const Quiz = ({ time }) => {
 
     setIncorrectOptions(incorrectOptions);
     randomize(correctAuthor, incorrectOptions);
-    setDisabledButtons(false);
+    // setDisabledButtons(false);
   };
 
   // RANDOMIZE BUTTONS
@@ -105,7 +105,7 @@ const Quiz = ({ time }) => {
   //RENDER
 
   if (quizFinished) {
-    return <Leaderboard />;
+    return <Leaderboard score={score} />;
   } else {
     return (
       <>
@@ -129,7 +129,7 @@ const Quiz = ({ time }) => {
               onClick={() => {
                 handleAnswer(button);
               }}
-              disabled={disabledButtons || (button !== quote.character ? true : false)}
+              // disabled={disabledButtons || (button !== quote.character ? true : false)}
             >
               {button}
             </button>
@@ -142,7 +142,7 @@ const Quiz = ({ time }) => {
               type="submit"
               className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer"
               onClick={() => handleAnswer(button)}
-              disabled={disabledButtons || (button !== quote.character ? true : false)}
+              // disabled={disabledButtons || (button !== quote.character ? true : false)}
             >
               {button}
             </button>

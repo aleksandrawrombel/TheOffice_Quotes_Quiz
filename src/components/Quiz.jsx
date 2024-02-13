@@ -7,6 +7,7 @@ const Quiz = () => {
   const [incorrectOptions, setIncorrectOptions] = useState([]);
   const [randomOption, setRandomOption] = useState([]);
   const [score, setScore] = useState(0);
+  const [disabledButtons, setDisabledButtons] = useState(false);
 
   // FETCHING THE QUOTE
 
@@ -26,6 +27,7 @@ const Quiz = () => {
         if (response && response.quote.length <= 200) {
           setQuote(response);
           createIncorrectOptions(response.character);
+          setDisabledButtons(false);
         } else {
           fetchQuote();
         }
@@ -50,10 +52,12 @@ const Quiz = () => {
     for (let i = 0; i < 3; i++) {
       const randomIndex = Math.floor(Math.random() * charactersCopy.length);
       incorrectOptions.push(charactersCopy[randomIndex].name);
+      charactersCopy.splice(randomIndex, 1);
     }
 
     setIncorrectOptions(incorrectOptions);
     randomize(correctAuthor, incorrectOptions);
+    setDisabledButtons(false);
   };
 
   // RANDOMIZE BUTTONS
@@ -98,8 +102,11 @@ const Quiz = () => {
           <button
             key={index}
             type="submit"
-            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
-            onClick={() => handleAnswer(button)}
+            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer"
+            onClick={() => {
+              handleAnswer(button);
+            }}
+            disabled={disabledButtons || (button !== quote.character ? true : false)}
           >
             {button}
           </button>
@@ -110,8 +117,9 @@ const Quiz = () => {
           <button
             key={index}
             type="submit"
-            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
+            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer"
             onClick={() => handleAnswer(button)}
+            disabled={disabledButtons || (button !== quote.character ? true : false)}
           >
             {button}
           </button>

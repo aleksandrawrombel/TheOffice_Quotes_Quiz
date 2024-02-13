@@ -6,6 +6,9 @@ const Quiz = () => {
   const [quote, setQuote] = useState([]);
   const [incorrectOptions, setIncorrectOptions] = useState([]);
   const [randomOption, setRandomOption] = useState([]);
+  const [score, setScore] = useState(0);
+
+  // FETCHING THE QUOTE
 
   useEffect(() => {
     fetchQuote();
@@ -32,11 +35,13 @@ const Quiz = () => {
       });
   };
 
+  // INCORRECT ANSWERS
+
   const createIncorrectOptions = (correctAuthor) => {
     const incorrectOptions = [];
     const charactersCopy = [...characters];
 
-    //remove the correct author from copied characters array
+    // remove the correct author from copied characters array
     charactersCopy.splice(
       charactersCopy.findIndex((character) => character.name === correctAuthor),
       1
@@ -45,14 +50,13 @@ const Quiz = () => {
     for (let i = 0; i < 3; i++) {
       const randomIndex = Math.floor(Math.random() * charactersCopy.length);
       incorrectOptions.push(charactersCopy[randomIndex].name);
-      // charactersCopy.splice(randomIndex, 1);
     }
 
     setIncorrectOptions(incorrectOptions);
     randomize(correctAuthor, incorrectOptions);
   };
 
-  //randomize answers
+  // RANDOMIZE BUTTONS
 
   const randomize = (correctAuthor, incorrectOptions) => {
     const options = [correctAuthor, ...incorrectOptions];
@@ -65,17 +69,37 @@ const Quiz = () => {
     setRandomOption(options);
   };
 
+  // SCORING
+
+  const handleAnswer = (selectedAnswer) => {
+    if (selectedAnswer === quote.character) {
+      setScore((prev) => prev + 1);
+    }
+    fetchQuote();
+  };
+
+  //RENDER
+
   return (
     <>
-      <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
-        <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">{quote.quote}</h1>
+      <div className="flex flex-col justify-center items-center">
+        <div className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 m-3 text-center self-end">
+          Score: {score}
+        </div>
+        <div className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 m-3 text-center mb-6 self-end">
+          Timer
+        </div>
+        <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
+          <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">{quote.quote}</h1>
+        </div>
       </div>
       <section className="flex mb-1">
         {randomOption.slice(0, 2).map((button, index) => (
           <button
             key={index}
             type="submit"
-            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
+            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
+            onClick={() => handleAnswer(button)}
           >
             {button}
           </button>
@@ -86,7 +110,8 @@ const Quiz = () => {
           <button
             key={index}
             type="submit"
-            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
+            className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3"
+            onClick={() => handleAnswer(button)}
           >
             {button}
           </button>

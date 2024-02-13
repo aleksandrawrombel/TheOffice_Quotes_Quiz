@@ -36,14 +36,16 @@ const Quiz = () => {
     const incorrectOptions = [];
     const charactersCopy = [...characters];
 
-    //remove the correcy author from copied characters array
+    //remove the correct author from copied characters array
     charactersCopy.splice(
       charactersCopy.findIndex((character) => character.name === correctAuthor),
       1
     );
 
     for (let i = 0; i < 3; i++) {
-      incorrectOptions.push(charactersCopy[i].name);
+      const randomIndex = Math.floor(Math.random() * charactersCopy.length);
+      incorrectOptions.push(charactersCopy[randomIndex].name);
+      // charactersCopy.splice(randomIndex, 1);
     }
 
     setIncorrectOptions(incorrectOptions);
@@ -58,7 +60,7 @@ const Quiz = () => {
     // Fisher-Yates shuffle algorithm
     for (let i = options.length - 1; i > 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
-      [options[i], (options[randomIndex] = options[randomIndex]), options[i]];
+      [options[i], options[randomIndex]] = [options[randomIndex], options[i]];
     }
     setRandomOption(options);
   };

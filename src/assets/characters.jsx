@@ -46,8 +46,6 @@ const characters = [
   { name: 'Zeke' },
   { name: 'Madge Madsen' },
   { name: 'Rolf' },
-  { name: 'Elizabeth the Stripper' },
-  { name: 'Frank the Warehouse Foreman' },
   { name: 'Val Johnson' },
   { name: 'Trevor' },
   { name: 'Martin Nash' },

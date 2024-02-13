@@ -88,14 +88,14 @@ const Quiz = ({ time }) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-    if (timer > 0) {
-      setTimer((prev) => prev - 1);
-    }
-  }, 1000);
-  return () => {
-    clearInterval(interval);
-  };
-}, [timer]);
+      if (timer > 0) {
+        setTimer((prev) => prev - 1);
+      }
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timer]);
 
   //RENDER
 

@@ -59,18 +59,17 @@ body {
   box-shadow: inset -7.5px -2.5px 10px 0 rgba(254, 204, 73, 0.6),
     /* Adjusted shadow values */ inset 20px 20px 30px 0 rgba(255, 255, 255, 0.3),
     inset 7.5px 7.5px 10px 0 rgba(255, 255, 255, 0.3);
-
-  &::after {
-    position: absolute;
-    top: 5px;
-    left: 25px;
-    right: 25px;
-    height: 50px;
-    content: '';
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.15);
-  }
+}
+.jello::after {
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  right: 25px;
+  height: 50px;
+  content: '';
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 5px 3px rgba(255, 255, 255, 0.15);
 }
 
 .stapler {
@@ -78,50 +77,48 @@ body {
   top: 45%; /* Adjusted top position */
   left: 27%; /* Adjusted left position */
   animation: jiggle 6000ms linear infinite;
+}
+.stapler .metal {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  width: 90px;
+  height: 10px;
+  background-color: #b4b4b4;
+  transform: rotate(3deg);
+  transform-origin: 0 0;
+}
 
-  .metal {
-    position: absolute;
-    top: 20px;
-    left: 5px;
-    width: 90px;
-    height: 10px;
-    background-color: #b4b4b4;
-    transform: rotate(3deg);
-    transform-origin: 0 0;
-  }
+.stapler .top {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 130px;
+  height: 30px;
+  background-color: #3c3c3c;
+  border-radius: 5px 40% 2.5px 2.5px / 5px 45% 2.5px 2.5px;
+  transform: rotate(6deg);
+  transform-origin: 100% 100%;
+}
 
-  .top {
-    position: absolute;
-    top: 5px;
-    left: 0;
-    width: 130px;
-    height: 30px;
-    background-color: #3c3c3c;
-    border-radius: 5px 40% 2.5px 2.5px / 5px 45% 2.5px 2.5px;
-    transform: rotate(6deg);
-    transform-origin: 100% 100%;
-  }
-
-  .bottom {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 130px;
-    height: 11px;
-    background-color: #3c3c3c;
-    border-radius: 1.5px 0 1.5px 1.5px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 7.5px;
-      right: 0;
-      width: 30px;
-      height: 15px;
-      background-color: #3c3c3c;
-      border-radius: 3px;
-    }
-  }
+.stapler .bottom {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 130px;
+  height: 11px;
+  background-color: #3c3c3c;
+  border-radius: 1.5px 0 1.5px 1.5px;
+}
+.stapler .bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 7.5px;
+  right: 0;
+  width: 30px;
+  height: 15px;
+  background-color: #3c3c3c;
+  border-radius: 3px;
 }
 
 .shine {
@@ -145,18 +142,17 @@ body {
   box-shadow: 0.5px 0.5px 0 0.5px #c2a8a7, inset 0.5px -0.5px 0 0.5px lighten(#f1fbe3, 10%),
     inset 0.5px -0.5px 1.5px 0.5px lighten(#f1fbe3, 10%), 2.5px 7.5px 10px 0 rgba(black, 0.2),
     1px 1px 5px 0 rgba(black, 0.2), 10px 5px 10px 0 rgba(black, 0.1);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
-    background-color: rgba(#c2a8a7, 0.1);
-    border-radius: 50%;
-    box-shadow: 5px 0 5px 0 lighten(#f1fbe3, 10%), inset 5px 0 5px 0 rgba(darken(#c2a8a7, 10%), 0.1);
-  }
+}
+.plate::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(#c2a8a7, 0.1);
+  border-radius: 50%;
+  box-shadow: 5px 0 5px 0 lighten(#f1fbe3, 10%), inset 5px 0 5px 0 rgba(darken(#c2a8a7, 10%), 0.1);
 }
 
 @keyframes wobble {

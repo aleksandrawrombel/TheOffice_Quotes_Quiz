@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import theOffice_logo from '../assets/theOffice_logo.png';
 import characters from '../assets/characters';
 
-const Quiz = () => {
+const Quiz = ({ time }) => {
   const [quote, setQuote] = useState([]);
   const [incorrectOptions, setIncorrectOptions] = useState([]);
   const [randomOption, setRandomOption] = useState([]);
   const [score, setScore] = useState(0);
   const [disabledButtons, setDisabledButtons] = useState(false);
+  const [timer, setTimer] = useState(time);
 
   // FETCHING THE QUOTE
+  // timer
 
   useEffect(() => {
     fetchQuote();
@@ -77,10 +79,23 @@ const Quiz = () => {
 
   const handleAnswer = (selectedAnswer) => {
     if (selectedAnswer === quote.character) {
-      setScore((prev) => prev + 1);
+      setScore((prev) => prev + 100);
     }
     fetchQuote();
   };
+
+  // TIMER
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+    if (timer > 0) {
+      setTimer((prev) => prev - 1);
+    }
+  }, 1000);
+  return () => {
+    clearInterval(interval);
+  };
+}, [timer]);
 
   //RENDER
 
@@ -91,7 +106,7 @@ const Quiz = () => {
           Score: {score}
         </div>
         <div className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 m-3 text-center mb-6 self-end">
-          Timer
+          {timer}
         </div>
         <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
           <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">{quote.quote}</h1>

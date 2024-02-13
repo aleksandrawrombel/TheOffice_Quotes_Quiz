@@ -50,7 +50,7 @@ const Start = ({ setName }) => {
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz />}
+      {gameStarted && <Quiz time={60} />}
     </main>
   );
 };

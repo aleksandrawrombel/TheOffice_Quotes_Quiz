@@ -272,3 +272,18 @@ body {
     transform: translateX(calc(-50vw - 250px));
   }
 }
+
+/* red pulse for timer */
+
+@keyframes pulse-red-animation {
+  from {
+    background-color: tomato;
+  }
+  to {
+    background-color: #e3e2ea;
+  }
+}
+.pulse-red {
+  animation: pulse-red-animation 1s infinite;
+}
+

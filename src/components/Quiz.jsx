@@ -3,7 +3,7 @@ import theOffice_logo from '../assets/theOffice_logo.png';
 import characters from '../assets/characters';
 import Leaderboard from './Leaderboard';
 
-const Quiz = ({ time }) => {
+const Quiz = ({ time, name }) => {
   // quote fetching state
   const [quote, setQuote] = useState([]);
   const [incorrectOptions, setIncorrectOptions] = useState([]);
@@ -116,7 +116,7 @@ const Quiz = ({ time }) => {
   //RENDER
 
   if (quizFinished) {
-    return <Leaderboard score={score} />;
+    return <Leaderboard score={score} name={name} />;
   } else {
     return (
       <>

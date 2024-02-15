@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import github_logo from '../assets/github_logo.png';
 
 const Footer = () => {
   return (
@@ -15,9 +16,9 @@ const Footer = () => {
           <a
             href="https://github.com/aleksandrawrombel/TheOffice_Quotes_Quiz"
             target="_blank"
-            className="p-3 text-sm w-25 md:w-60 flex justify-center md:hidden"
+            className="text-sm w-25 md:w-60 flex justify-center md:hidden"
           >
-            Github!
+            <img src={github_logo} className="p-1 h-11" />
           </a>
         </li>
       </ul>

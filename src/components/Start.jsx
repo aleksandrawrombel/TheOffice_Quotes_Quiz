@@ -66,7 +66,7 @@ const Start = ({ setName }) => {
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz time={10} name={inputName} />}
+      {gameStarted && <Quiz time={1000} name={inputName} />}
     </main>
   );
 };

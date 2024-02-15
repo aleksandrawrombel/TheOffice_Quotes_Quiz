@@ -21,7 +21,7 @@ body {
 .canvas {
   position: relative;
   width: 250px;
-  height: 250px; 
+  height: 250px;
 }
 
 .move,
@@ -44,20 +44,19 @@ body {
 }
 
 .tilt {
-  perspective: 75px; 
+  perspective: 75px;
 }
 
 .jello {
   position: absolute;
-  width: 185px; 
-  height: 140px; 
-  top: calc(50% - 90px); 
-  left: calc(50% - 90px); 
+  width: 185px;
+  height: 140px;
+  top: calc(50% - 90px);
+  left: calc(50% - 90px);
   background-color: rgba(254, 204, 73, 0.65);
   border-radius: 50% 50% 50% 50% / 40% 40% 20% 20%;
   transform: rotateX(16deg);
-  box-shadow: inset -7.5px -2.5px 10px 0 rgba(254, 204, 73, 0.6),
-   inset 20px 20px 30px 0 rgba(255, 255, 255, 0.3),
+  box-shadow: inset -7.5px -2.5px 10px 0 rgba(254, 204, 73, 0.6), inset 20px 20px 30px 0 rgba(255, 255, 255, 0.3),
     inset 7.5px 7.5px 10px 0 rgba(255, 255, 255, 0.3);
 }
 .jello::after {
@@ -74,8 +73,8 @@ body {
 
 .stapler {
   position: absolute;
-  top: 45%; 
-  left: 27%; 
+  top: 45%;
+  left: 27%;
   animation: jiggle 6000ms linear infinite;
 }
 .stapler .metal {
@@ -123,9 +122,9 @@ body {
 
 .shine {
   position: absolute;
-  top: 55px; 
-  left: 10px; 
-  bottom: 20px; 
+  top: 55px;
+  left: 10px;
+  bottom: 20px;
   width: 3px;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1.5px;
@@ -133,10 +132,10 @@ body {
 
 .plate {
   position: absolute;
-  left: calc(50% - 137.5px); 
-  top: calc(50% - 7.5px); 
-  width: 280px; 
-  height: 90px; 
+  left: calc(50% - 137.5px);
+  top: calc(50% - 7.5px);
+  width: 280px;
+  height: 90px;
   border-radius: 50%;
   background-color: #f1fbe3;
   box-shadow: 0.5px 0.5px 0 0.5px #c2a8a7, inset 0.5px -0.5px 0 0.5px lighten(#f1fbe3, 10%),
@@ -298,11 +297,20 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: linear-gradient( 150deg, rgba(0, 0, 0, 0.65), transparent);
+  background-image: linear-gradient(150deg, rgba(0, 0, 0, 0.65), transparent);
 }
 
 .blackboard {
   box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 3px 4px 8px 5px rgba(0, 0, 0, 0.7);
-  background-image: radial-gradient(circle at left 30%, rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3) 80px, rgba(34, 34, 34, 0.5) 100px, rgba(51, 51, 51, 0.5) 160px, rgba(51, 51, 51, 0.5)), linear-gradient( 215deg, transparent, transparent 100px, #222 260px, #222 320px, transparent), radial-gradient(circle at right, #111, rgba(51, 51, 51, 1));
+  background-image: radial-gradient(
+      circle at left 30%,
+      rgba(34, 34, 34, 0.3),
+      rgba(34, 34, 34, 0.3) 80px,
+      rgba(34, 34, 34, 0.5) 100px,
+      rgba(51, 51, 51, 0.5) 160px,
+      rgba(51, 51, 51, 0.5)
+    ),
+    linear-gradient(215deg, transparent, transparent 100px, #222 260px, #222 320px, transparent),
+    radial-gradient(circle at right, #111, rgba(51, 51, 51, 1));
   background-color: #222;
 }

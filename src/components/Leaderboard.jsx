@@ -15,6 +15,7 @@ const Leaderboard = ({ name, score }) => {
         throw error;
       }
       console.log('success', data);
+      getData();
     } catch (error) {
       console.log('error:', error.message);
     }
@@ -51,13 +52,33 @@ const Leaderboard = ({ name, score }) => {
         <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations, ${name}!`}</p>
         <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`You scored ${score} points!`}</p>
       </div>
-      <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[30rem] md:h-[30rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
-        <ul>
-            {leaderboardData.map((user) => {
-                return <li key={user.id} className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">{user.username}: {user.score}</li>
+      <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[22rem] md:h-[30rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
+        <table className="border-separate border-spacing-x-10 md:border-spacing-x-36">
+          <thead className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed text-center">
+            <tr>
+              <th>Rank</th>
+              <th>Username</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderboardData.map((user, index) => {
+              const currentUser = user.username === name && user.score === score;
+              return (
+                <tr
+                  key={user.id}
+                  className={`text-white text-[1rem] md:text-[1.5rem] leading-relaxed ${
+                    currentUser ? 'text-green-500 animate-pulse' : ''
+                  }`}
+                >
+                  <td>{`${index + 1}.`}</td>
+                  <td className="text-center">{user.username}</td>
+                  <td className="text-center">{user.score}</td>
+                </tr>
+              );
             })}
-        </ul>
-        {/* <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">Leaderboard</p> */}
+          </tbody>
+        </table>
       </div>
       <div className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold text-l w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center p-4 mb-5 overflow-hidden cursor-pointer animate-pulse">
         <button className="text-black text-[1rem] md:text-[1.25rem] leading-relaxed">Sign up</button>

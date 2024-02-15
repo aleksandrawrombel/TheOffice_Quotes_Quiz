@@ -9,6 +9,7 @@ module.exports = {
       },
       fontFamily: {
         office_noto: ['Noto Sans', 'sans-serif'],
+        office_chalk: ['Coming Soon', 'cursive'],
       },
     },
   },

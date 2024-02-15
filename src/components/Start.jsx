@@ -43,15 +43,15 @@ const Start = ({ setName }) => {
           </div>
           <form className="flex flex-col justify-center items-center h-[13rem]" noValidate>
             <input
-              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-xl font-semibold text-l w-60 md:flex justify-center text-center focus:outline-none"
-              placeholder="Enter your name"
+              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-none"
+              placeholder="Enter your username"
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}
             ></input>
             {inputName && (
               <button
                 type="submit"
-                className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse"
                 onClick={handleGameStart}
               >
                 Start
@@ -59,14 +59,14 @@ const Start = ({ setName }) => {
             )}
           </form>
           {error && (
-            <span className="text-[0.8rem] p-1 mb-5 text-red-800 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-xl font-semibold">
+            <span className="text-[0.8rem] p-1 mb-5 text-red-800 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
               {error}
             </span>
           )}
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz time={19} name={inputName} />}
+      {gameStarted && <Quiz time={10} name={inputName} />}
     </main>
   );
 };

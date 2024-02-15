@@ -121,18 +121,18 @@ const Quiz = ({ time, name }) => {
     return (
       <>
         <div className="flex flex-col justify-center items-center">
-          <div className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 m-3 text-center self-end">
+          <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 m-3 text-center self-end">
             Score: {score}
           </div>
           <div
-            className={`bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 m-3 text-center mb-6 self-end ${
+            className={`bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 m-3 text-center mb-6 self-end ${
               lastTenSeconds ? 'pulse-red' : ''
             }`}
           >
             {formattedTimer}
           </div>
-          <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-center items-center p-4 mb-5 overflow-hidden">
-            <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed">{quote.quote}</h1>
+          <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
+            <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk">{quote.quote}</h1>
           </div>
         </div>
         <section className="flex mb-1">
@@ -140,7 +140,7 @@ const Quiz = ({ time, name }) => {
             <button
               key={index}
               type="submit"
-              className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer"
+              className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer hover:scale-105"
               onClick={() => {
                 handleAnswer(button);
               }}
@@ -154,7 +154,7 @@ const Quiz = ({ time, name }) => {
             <button
               key={index}
               type="submit"
-              className="bg-office_gray border-black border-solid border-2 rounded-xl font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer"
+              className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer hover:scale-105"
               onClick={() => {
                 handleAnswer(button);
               }}

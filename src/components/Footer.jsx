@@ -3,9 +3,9 @@ import github_logo from '../assets/github_logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-office_gray h-15 m-10 p-3 rounded-xl">
+    <footer className="bg-office_gray h-15 m-10 p-3 rounded-full hover:drop-shadow-xl">
       <ul className="flex justify-between items-center">
-        <li className="border-black border-solid border-2 rounded-xl font-semibold hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out">
+        <li className="border-black border-solid border-2 rounded-full font-semibold hover:bg-office_button hover:shadow-lg transition duration-300 hover:scale-105 hover:drop-shadow-2xl">
           <a
             href="https://github.com/aleksandrawrombel/TheOffice_Quotes_Quiz"
             target="_blank"

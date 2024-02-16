@@ -43,7 +43,7 @@ const Start = ({ setName }) => {
           </div>
           <form className="flex flex-col justify-center items-center h-[13rem]" noValidate>
             <input
-              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-none"
+              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
               placeholder="Enter your username"
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}

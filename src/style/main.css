@@ -286,6 +286,33 @@ body {
   animation: pulse-red-animation 1s infinite;
 }
 
+/* rainbow animation */
+
+@keyframes rainbow-animation {
+  0% {
+    background-color: tomato;
+  }
+  20% {
+    background-color: orange;
+  }
+  40% {
+    background-color: yellow;
+  }
+  60% {
+    background-color: #47ff47;
+  }
+  80% {
+    background-color: blue;
+  }
+  100% {
+    background-color: purple;
+  }
+}
+
+.rainbow {
+  animation: rainbow-animation 5s infinite;
+}
+
 /* tada animation */
 
 @keyframes tada {

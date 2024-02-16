@@ -48,7 +48,6 @@ const Leaderboard = ({ name, score }) => {
 
   const handleSignUp = () => {
     setRegistration(true);
-    console.log(registration);
   };
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const Leaderboard = ({ name, score }) => {
   return (
     <>
       {registration ? (
-        <Register />
+        <Register supabase={supabase} />
       ) : (
         <>
           <div className="flex flex-col justify-center items-center">
@@ -83,7 +82,7 @@ const Leaderboard = ({ name, score }) => {
                       <tr
                         key={user.id}
                         className={`text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk ${
-                          currentUser ? 'text-green-500 animate-pulse' : ''
+                          currentUser ? 'animate-pulse' : ''
                         }`}
                       >
                         <td>{`${index + 1}.`}</td>

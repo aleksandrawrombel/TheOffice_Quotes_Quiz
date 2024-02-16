@@ -6,7 +6,6 @@ import Quiz from './Quiz';
 const Start = ({ setName }) => {
   // username and validation state
   const [inputName, setInputName] = useState('');
-  const [error, setError] = useState('');
   // loading page and quiz start state
   const [loading, setLoading] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
@@ -21,15 +20,7 @@ const Start = ({ setName }) => {
     }
   }, [loading]);
 
-  const validUsernameRegex = /^[a-zA-Z0-9]{3,20}$/;
-
-  const handleGameStart = (e) => {
-    e.preventDefault();
-
-    if (!validUsernameRegex.test(inputName)) {
-      setError('Username must be between 3 and 20 characters long, no special characters allowed.');
-      return;
-    }
+  const handleGameStart = () => {
     setLoading(true);
   };
 
@@ -51,22 +42,17 @@ const Start = ({ setName }) => {
             {inputName && (
               <button
                 type="submit"
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse hover:scale-105 hover:drop-shadow-2xl"
                 onClick={handleGameStart}
               >
                 Start
               </button>
             )}
           </form>
-          {error && (
-            <span className="text-[0.8rem] p-1 mb-5 text-red-800 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-              {error}
-            </span>
-          )}
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz time={59} name={inputName} />}
+      {gameStarted && <Quiz time={15} name={inputName} />}
     </main>
   );
 };

@@ -151,7 +151,7 @@ const Quiz = ({ time, name }) => {
     return (
       <>
         <div className="flex ml-40 md:ml-[60rem]">
-          <div className=" bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[6rem] h-[6rem] flex flex-col justify-center items-center mr-3 md:mr-6">
+          <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[6rem] h-[6rem] flex flex-col justify-center items-center mr-3 md:mr-6">
             <span>Score:</span>
             <span>{score}</span>
           </div>

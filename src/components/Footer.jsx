@@ -21,6 +21,9 @@ const Footer = () => {
             <img src={github_logo} className="p-1 h-11" />
           </a>
         </li>
+        <p className="text-[0.7rem] md:text-[0.9rem] text-black text-opacity-60  mr-2 md:mr-8">
+          Ola's The Office Quotes Quiz &#169;2024
+        </p>
       </ul>
     </footer>
   );

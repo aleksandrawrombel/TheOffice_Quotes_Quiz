@@ -1,7 +1,7 @@
 # That's what she said?! The Office quotes quiz!
 
 
-![The Office logo](https://github.com/aleksandrawrombel/TheOffice_Quotes_Quiz/assets/128837261/b26167f5-78b7-4834-850a-ed27430f4c85)
+![image](https://github.com/aleksandrawrombel/TheOffice_Quotes_Quiz/assets/128837261/1dab3c68-4980-40aa-b7f4-7eda2bc2242f)
 
 
 ## A guessing game based on the quotes from the US show The Office. Guess the author of the quote as fast as you can before the time runs out, earn points to see your score in the global ranking!

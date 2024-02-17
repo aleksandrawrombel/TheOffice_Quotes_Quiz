@@ -25,20 +25,38 @@ const Leaderboard = ({ name, score }) => {
   }
 
   // GET DATA FROM SUPABASE AND RENDER 10 BEST SCORES
+  // JOIN LEADERBOARD AND AUTH TABLES
 
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   async function getData() {
     try {
-      const { data, error } = await supabase
+      const leaderboardData = await supabase
         .from('Leaderboard')
         .select('*')
         .order('score', { ascending: false })
-        .limit(10);
-      if (error) {
-        throw error;
+        .limit(10)
+        .then((response) => response.data);
+
+      const userIds = leaderboardData.map((user) => user.user_id);
+
+      const userDataResponse = await supabase
+        .from('auth.users')
+        .select('username')
+        .in('id', userIds)
+        .then((response) => response.data);
+
+      if (!userDataResponse || userDataResponse.length === 0) {
+        console.log('No user data found');
+        return;
       }
-      setLeaderboardData(data);
+
+      const joinedData = leaderboardData.map((user) => {
+        const userData = userDataResponse.find((u) => u.id === user.user_id);
+        return { ...user, username: userData ? userData.email : 'Unknown' };
+      });
+
+      setLeaderboardData(joinedData);
     } catch (error) {
       console.log('error', error.message);
     }

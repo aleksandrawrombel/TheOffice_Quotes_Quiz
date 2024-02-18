@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../style/main.css';
 import success from '../assets/success_giphy.gif';
-import Quiz from './Quiz';
+import LogIn from './LogIn';
 
 // REGISTER
 
@@ -14,8 +14,8 @@ const Register = ({ supabase }) => {
   // registration status state
   const [registrationStatus, setRegistrationStatus] = useState('');
   const [error, setError] = useState('');
-  // game restart state
-  const [gameRestart, setGameRestart] = useState(false);
+  // logged in state
+  const [loggedIn, setLoggedIn] = useState(false);
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -37,7 +37,8 @@ const Register = ({ supabase }) => {
       setRegistrationStatus('Registered!');
       console.log(registrationStatus);
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
+      console.log(error);
       setRegistrationStatus('Registration failed!');
       console.log(registrationStatus);
     }
@@ -50,14 +51,16 @@ const Register = ({ supabase }) => {
     }
   }
 
-  const handleGameRestart = () => {
-    setGameRestart(true);
+  // CHECK IF LOGGED IN
+
+  const handleLogIn = () => {
+    setLoggedIn(true);
   };
 
-  if (gameRestart) {
+  if (loggedIn) {
     return (
       <>
-        <Quiz time={15} />
+        <LogIn supabase={supabase} />
       </>
     );
   }
@@ -105,8 +108,8 @@ const Register = ({ supabase }) => {
                   className="p-3 m-1 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
                 ></input>
                 {error && (
-                  <span className="text-[0.8rem] p-1 m-1 ml-3 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-                    {error}
+                  <span className="text-[0.8rem] p-1 m-2 ml-3 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
+                    Oh no, there's an error!
                   </span>
                 )}
                 <button
@@ -120,15 +123,15 @@ const Register = ({ supabase }) => {
             </>
           ) : (
             <div className="flex flex-col justify-center items-center">
-              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-5">
+              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
                 Registration succesful 😎
               </p>
-              <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52" />
+              <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6" />
               <button
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-5"
-                onClick={handleGameRestart}
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-6"
+                onClick={handleLogIn}
               >
-                Start the quiz!
+                Log in!
               </button>
             </div>
           )}

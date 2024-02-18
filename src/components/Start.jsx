@@ -3,8 +3,8 @@ import theOffice_logo from '../assets/theOffice_logo.png';
 import Loading from './Loading';
 import Quiz from './Quiz';
 
-const Start = ({ setName }) => {
-  // username and validation state
+const Start = ({ setEmail }) => {
+  // username state
   const [inputName, setInputName] = useState('');
   // loading page and quiz start state
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const Start = ({ setName }) => {
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        setName(inputName);
+        setEmail(inputName);
         setLoading(false);
         setGameStarted(true);
       }, 4_000);
@@ -34,15 +34,15 @@ const Start = ({ setName }) => {
           </div>
           <form className="flex flex-col justify-center items-center h-[13rem]" noValidate>
             <input
-              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
-              placeholder="Enter your username"
+              className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-64 md:w-80 md:flex justify-center text-center focus:outline-4 outline-black"
+              placeholder="Enter your email"
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}
             ></input>
             {inputName && (
               <button
                 type="submit"
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse hover:scale-105 hover:drop-shadow-2xl"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-64 md:w-80 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse hover:scale-105 hover:drop-shadow-2xl"
                 onClick={handleGameStart}
               >
                 Start
@@ -52,7 +52,7 @@ const Start = ({ setName }) => {
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz time={15} name={inputName} />}
+      {gameStarted && <Quiz time={15} email={inputName} />}
     </main>
   );
 };

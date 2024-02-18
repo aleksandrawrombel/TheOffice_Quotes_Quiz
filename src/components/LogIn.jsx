@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Quiz from './Quiz';
 import start from '../assets/start_giphy.gif';
 import success from '../assets/success_giphy.gif';
+import Leaderboard from './Leaderboard';
 
 const LogIn = ({ supabase }) => {
   // form state
@@ -13,25 +14,31 @@ const LogIn = ({ supabase }) => {
   // game start state
   const [gameStart, setGameStart] = useState(false);
 
+  useEffect(() => {
+    const sessionToken = localStorage.getItem('sessionToken');
+    if (sessionToken) {
+      setLogInStatus('Logged in!');
+    }
+  }, []);
+
   async function handleLogIn(e) {
     e.preventDefault();
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
       if (error) {
-        throw new Error(error.message);
+        throw error(error.message);
       }
+      localStorage.setItem('sessionToken', data.session.access_token);
       setLogInStatus('Logged in!');
       setError('');
-      console.log(logInStatus);
     } catch (error) {
       setError(error.message);
-      console.log(error);
       setLogInStatus('Log In failed!');
-      console.log(logInStatus);
+      console.log(error);
     }
   }
 
@@ -39,13 +46,13 @@ const LogIn = ({ supabase }) => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
-        throw new Error(error.message);
+        throw error(error.message);
       }
+      localStorage.removeItem('sessionToken');
       setLogInStatus('');
       setError('');
     } catch (error) {
       setError(error.message);
-      console.log(error);
     }
   }
 

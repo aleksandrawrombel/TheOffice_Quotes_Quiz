@@ -4,7 +4,7 @@ import characters from '../assets/characters';
 import Leaderboard from './Leaderboard';
 import '../style/main.css';
 
-const Quiz = ({ time, email }) => {
+const Quiz = ({ time, name }) => {
   // quote fetching state
   const [quote, setQuote] = useState([]);
   const [incorrectOptions, setIncorrectOptions] = useState([]);
@@ -146,7 +146,7 @@ const Quiz = ({ time, email }) => {
   //RENDER
 
   if (quizFinished) {
-    return <Leaderboard score={score} email={email} />;
+    return <Leaderboard score={score} name={name} />;
   } else {
     return (
       <>

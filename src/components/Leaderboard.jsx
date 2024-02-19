@@ -1,28 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import Register from './Registration';
+import supabase from './supabase';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-const Leaderboard = ({ score, email }) => {
+const Leaderboard = ({ score, name }) => {
   const [registration, setRegistration] = useState(false);
-
-  // ADD EMAIL AND SCORE TO SUPABASE
-
-  async function insertData(email, score) {
-    try {
-      const { data, error } = await supabase.from('Leaderboard').insert([{ email: email, score: score }]);
-      if (error) {
-        throw error;
-      }
-      console.log('success', data);
-      getData();
-    } catch (error) {
-      console.log('error:', error.message);
-    }
-  }
 
   // GET DATA FROM SUPABASE AND RENDER 10 BEST SCORES
 
@@ -31,20 +12,25 @@ const Leaderboard = ({ score, email }) => {
   async function getData() {
     try {
       const { data, error } = await supabase
-        .from('Leaderboard')
-        .select('email, score')
+        .from('players')
+        .select('score, email')
         .order('score', { ascending: false })
         .limit(10);
 
       if (error) {
-        console.log(error);
+        console.log(error.message);
         throw error;
       }
 
-      setLeaderboardData(data);
+      const leaderboardData = data.map((player) => ({
+        email: player.email,
+        score: player.score,
+      }));
+
+      setLeaderboardData(leaderboardData);
       console.log(data);
     } catch (error) {
-      console.log('error', error.message);
+      console.log(error.message);
     }
   }
 
@@ -55,19 +41,18 @@ const Leaderboard = ({ score, email }) => {
   };
 
   useEffect(() => {
-    insertData(email, score);
     getData();
-  }, [email, score]);
+  }, []);
 
   return (
     <>
       {registration ? (
-        <Register supabase={supabase} />
+        <Register score={score} />
       ) : (
         <>
           <div className="flex flex-col justify-center items-center">
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center flex-col p-4 mb-5 overflow-hidden blackboard font-office_chalk">
-              <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">Congratulations!</p>
+              <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations, ${name || 'to you'}!`}</p>
               <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`You scored ${score} points!`}</p>
             </div>
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[22rem] md:h-[30rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">

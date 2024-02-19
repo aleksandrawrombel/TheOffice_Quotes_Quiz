@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Quiz from './Quiz';
 import start from '../assets/start_giphy.gif';
 import success from '../assets/success_giphy.gif';
-import Leaderboard from './Leaderboard';
+import supabase from './supabase';
 
-const LogIn = ({ supabase }) => {
+const LogIn = ({}) => {
   // form state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +16,10 @@ const LogIn = ({ supabase }) => {
 
   useEffect(() => {
     const sessionToken = localStorage.getItem('sessionToken');
-    if (sessionToken) {
+    const userEmail = localStorage.getItem('userEmail');
+    if (sessionToken && userEmail) {
       setLogInStatus('Logged in!');
+      setEmail(userEmail);
     }
   }, []);
 
@@ -30,15 +32,17 @@ const LogIn = ({ supabase }) => {
         password,
       });
       if (error) {
-        throw error(error.message);
+        console.log(error.message);
+        throw error;
       }
       localStorage.setItem('sessionToken', data.session.access_token);
+      localStorage.setItem('userEmail', email);
       setLogInStatus('Logged in!');
       setError('');
     } catch (error) {
       setError(error.message);
       setLogInStatus('Log In failed!');
-      console.log(error);
+      console.log(error.message);
     }
   }
 
@@ -46,13 +50,16 @@ const LogIn = ({ supabase }) => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
-        throw error(error.message);
+        console.log(error.message);
+        throw error;
       }
       localStorage.removeItem('sessionToken');
       setLogInStatus('');
       setError('');
+      console.log('user logged out!');
     } catch (error) {
       setError(error.message);
+      console.log(error.message);
     }
   }
 
@@ -102,7 +109,7 @@ const LogIn = ({ supabase }) => {
                   disabled={logInStatus === 'Logged in!'}
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
                 >
-                  Log in!
+                  Log in
                 </button>
               </form>
             </>

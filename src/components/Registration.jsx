@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../style/main.css';
 import success from '../assets/success_giphy.gif';
 import LogIn from './LogIn';
+import Leaderboard from './Leaderboard';
+import supabase from './supabase';
 
 // REGISTER
 
-const Register = ({ supabase }) => {
+const Register = ({ score }) => {
   // form state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,6 +17,8 @@ const Register = ({ supabase }) => {
   const [error, setError] = useState('');
   // logged in state
   const [loggedIn, setLoggedIn] = useState(false);
+  // show leaderboard
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -40,6 +44,20 @@ const Register = ({ supabase }) => {
     }
   }
 
+  // INSERT EMAIL AND SCORE TO PLAYERS TABLE IN SUPABASE
+
+  async function insertData() {
+    try {
+      const { data, error } = await supabase.from('players').insert([{ email: email, score: score }]);
+      if (error) {
+        throw error;
+      }
+      console.log('success, email and score entered players table', data);
+    } catch (error) {
+      console.log('error: email and score did not enter players table', error.message);
+    }
+  }
+
   // CHECK IF LOGGED IN
 
   const handleLogIn = () => {
@@ -49,9 +67,19 @@ const Register = ({ supabase }) => {
   if (loggedIn) {
     return (
       <>
-        <LogIn supabase={supabase} />
+        <LogIn />
       </>
     );
+  }
+
+  // GO BACK TO LEADERBOARD
+
+  const handleshowLeaderboard = () => {
+    setShowLeaderboard(true);
+  };
+
+  if (showLeaderboard) {
+    return <Leaderboard name="to you" score={score} />;
   }
 
   return (
@@ -97,6 +125,9 @@ const Register = ({ supabase }) => {
                   type="submit"
                   disabled={registrationStatus === 'Registered!'}
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 m-1 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
+                  onClick={() => {
+                    insertData(email, score);
+                  }}
                 >
                   Register
                 </button>
@@ -109,10 +140,16 @@ const Register = ({ supabase }) => {
               </p>
               <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6" />
               <button
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-6"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-6 mb-1"
                 onClick={handleLogIn}
               >
-                Log in!
+                Log in
+              </button>
+              <button
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-6 mt-1"
+                onClick={handleshowLeaderboard}
+              >
+                Show leaderboard
               </button>
             </div>
           )}

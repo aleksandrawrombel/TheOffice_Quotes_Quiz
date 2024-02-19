@@ -3,7 +3,7 @@ import theOffice_logo from '../assets/theOffice_logo.png';
 import Loading from './Loading';
 import Quiz from './Quiz';
 
-const Start = ({ setEmail }) => {
+const Start = ({ setName }) => {
   // username state
   const [inputName, setInputName] = useState('');
   // loading page and quiz start state
@@ -13,7 +13,7 @@ const Start = ({ setEmail }) => {
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        setEmail(inputName);
+        setName(inputName);
         setLoading(false);
         setGameStarted(true);
       }, 4_000);
@@ -35,7 +35,7 @@ const Start = ({ setEmail }) => {
           <form className="flex flex-col justify-center items-center h-[13rem]" noValidate>
             <input
               className="p-3 m-5 mt-11 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-64 md:w-80 md:flex justify-center text-center focus:outline-4 outline-black"
-              placeholder="Enter your email"
+              placeholder="Enter your name"
               value={inputName}
               onChange={(e) => setInputName(e.target.value)}
             ></input>
@@ -52,7 +52,7 @@ const Start = ({ setEmail }) => {
         </>
       )}
       {loading && <Loading />}
-      {gameStarted && <Quiz time={15} email={inputName} />}
+      {gameStarted && <Quiz time={15} name={inputName} />}
     </main>
   );
 };

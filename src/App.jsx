@@ -7,16 +7,15 @@ import LogIn from './components/LogIn';
 const App = () => {
   const [logInStatus, setLogInStatus] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
 
   const handleLogInClick = () => {
-    setShowLogIn(true); 
-  }
-
+    setShowLogIn(true);
+  };
   return (
     <>
       <Header setLogInStatus={setLogInStatus} handleLogInClick={handleLogInClick} />
-      {!showLogIn && <Start setEmail={setEmail} />}
+      {!showLogIn && <Start setName={setName} />}
       {showLogIn && <LogIn />}
       <Footer />
     </>

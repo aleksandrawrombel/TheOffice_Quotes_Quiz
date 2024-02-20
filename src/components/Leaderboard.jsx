@@ -84,7 +84,7 @@ const Leaderboard = ({ score, name }) => {
             </div>
             <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-[20rem] md:w-[25rem] text-center p-4 mb-5 overflow-hidden cursor-pointer hover:bg-office_button transition duration-300 hover:scale-105 hover:drop-shadow-2xl animate-pulse">
               <button className="text-black text-[1rem] md:text-[1rem] leading-relaxed" onClick={handleSignUp}>
-                Sign up to join the leaderboard!
+                Register to join the leaderboard!
               </button>
             </div>
           </div>

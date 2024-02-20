@@ -8,7 +8,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
 
   const handleLogIn = () => {
     setLogInStatus(true);
-  };
+  }; 
 
   // LOG OUT BUTTON
 

@@ -20,7 +20,7 @@ const App = () => {
 
   const handleLogOut = () => {
     setLogInStatus(false);
-    setShowLogIn(true);
+    setShowLogIn(false);
   };
 
   return (

@@ -15,6 +15,8 @@ const LogIn = ({ updateLoginStatus }) => {
   // game start state
   const [gameStart, setGameStart] = useState(false);
 
+  // LOG IN
+
   async function handleLogIn(e) {
     e.preventDefault();
 
@@ -38,6 +40,8 @@ const LogIn = ({ updateLoginStatus }) => {
     }
   }
 
+  // LOG OUT
+
   async function handleLogOut() {
     try {
       const { error } = await supabase.auth.signOut();
@@ -53,14 +57,6 @@ const LogIn = ({ updateLoginStatus }) => {
       setError(error.message);
       console.log(error.message);
     }
-  }
-
-  const handleGameStart = () => {
-    setGameStart(true);
-  };
-
-  if (gameStart) {
-    return <Quiz time={15} />;
   }
 
   return (
@@ -93,8 +89,8 @@ const LogIn = ({ updateLoginStatus }) => {
                 ></input>
                 {error && (
                   <span className="text-[0.8rem] p-1 m-2 ml-3 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-                  Oh no, there's an error!
-                </span>
+                    Oh no, there's an error!
+                  </span>
                 )}
                 <button
                   type="submit"
@@ -106,18 +102,15 @@ const LogIn = ({ updateLoginStatus }) => {
             </>
           ) : (
             <div className="flex flex-col justify-center items-center h-[14rem]">
-              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
+              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-1">
                 Log in succesful 😎
+              </p>
+              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
+                Here is your suprise gif gallery, enjoy 😎
               </p>
               <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6" />
               <button
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-1 mt-5"
-                onClick={handleGameStart}
-              >
-                Start
-              </button>
-              <button
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-1 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
                 onClick={() => {
                   handleLogOut();
                 }}

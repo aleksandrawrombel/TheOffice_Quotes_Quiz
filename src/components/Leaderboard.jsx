@@ -13,7 +13,7 @@ const Leaderboard = ({ score, name }) => {
     try {
       const { data, error } = await supabase
         .from('players')
-        .select('score, email')
+        .select('score, username')
         .order('score', { ascending: false })
         .limit(10);
 
@@ -23,7 +23,7 @@ const Leaderboard = ({ score, name }) => {
       }
 
       const leaderboardData = data.map((player) => ({
-        email: player.email,
+        username: player.username,
         score: player.score,
       }));
 
@@ -52,7 +52,9 @@ const Leaderboard = ({ score, name }) => {
         <>
           <div className="flex flex-col justify-center items-center">
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center flex-col p-4 mb-5 overflow-hidden blackboard font-office_chalk">
-              <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations, ${name || 'to you'}!`}</p>
+              <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations, ${
+                name || 'to you'
+              }!`}</p>
               <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`You scored ${score} points!`}</p>
             </div>
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[22rem] md:h-[30rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
@@ -60,7 +62,7 @@ const Leaderboard = ({ score, name }) => {
                 <thead className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed text-center font-office_chalk">
                   <tr>
                     <th>Rank</th>
-                    <th>Email</th>
+                    <th>Username</th>
                     <th>Score</th>
                   </tr>
                 </thead>
@@ -72,7 +74,7 @@ const Leaderboard = ({ score, name }) => {
                         className="text-white text-[0.8rem] md:text-[1.3rem] leading-relaxed font-office_chalk"
                       >
                         <td>{`${index + 1}.`}</td>
-                        <td className="text-center">{user.email}</td>
+                        <td className="text-center">{user.username}</td>
                         <td className="text-center">{user.score}</td>
                       </tr>
                     );

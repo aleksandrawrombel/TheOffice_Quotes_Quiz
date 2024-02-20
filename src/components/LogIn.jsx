@@ -92,9 +92,9 @@ const LogIn = ({ updateLoginStatus }) => {
                   className="p-3 m-1 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
                 ></input>
                 {error && (
-                  <span className="text-[0.8rem] p-1 m-1 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-                    Oh no, there's an error!
-                  </span>
+                  <span className="text-[0.8rem] p-1 m-2 ml-3 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
+                  Oh no, there's an error!
+                </span>
                 )}
                 <button
                   type="submit"

@@ -12,6 +12,7 @@ const Register = ({ score }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [username, setUsername] = useState('');
   // registration status state
   const [registrationStatus, setRegistrationStatus] = useState('');
   const [error, setError] = useState('');
@@ -48,13 +49,13 @@ const Register = ({ score }) => {
 
   async function insertData() {
     try {
-      const { data, error } = await supabase.from('players').insert([{ email: email, score: score }]);
+      const { data, error } = await supabase.from('players').insert([{ email: email, score: score, username: username }]);
       if (error) {
         throw error;
       }
-      console.log('success, email and score entered players table', data);
+      console.log('success, email and score and username entered players table', data);
     } catch (error) {
-      console.log('error: email and score did not enter players table', error.message);
+      console.log('error: email and scor and username did not enter players table', error.message);
     }
   }
 
@@ -113,6 +114,14 @@ const Register = ({ score }) => {
                   value={confirmPassword}
                   placeholder="Confirm password"
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="p-3 m-1 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
+                ></input>
+                <input
+                  type="text"
+                  value={username}
+                  placeholder="Username"
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                   className="p-3 m-1 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
                 ></input>

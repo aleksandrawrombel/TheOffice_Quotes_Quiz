@@ -1,27 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Quiz from './Quiz';
+import Start from './Start';
 import start from '../assets/start_giphy.gif';
 import success from '../assets/success_giphy.gif';
 import supabase from './supabase';
 
-const LogIn = ({}) => {
+const LogIn = ({ updateLoginStatus }) => {
   // form state
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // log in status state
-  const [logInStatus, setLogInStatus] = useState('');
+  const [logInStatus, setLogInStatus] = useState(false);
   const [error, setError] = useState('');
   // game start state
   const [gameStart, setGameStart] = useState(false);
-
-  useEffect(() => {
-    const sessionToken = localStorage.getItem('sessionToken');
-    const userEmail = localStorage.getItem('userEmail');
-    if (sessionToken && userEmail) {
-      setLogInStatus('Logged in!');
-      setEmail(userEmail);
-    }
-  }, []);
 
   async function handleLogIn(e) {
     e.preventDefault();
@@ -35,13 +27,13 @@ const LogIn = ({}) => {
         console.log(error.message);
         throw error;
       }
-      localStorage.setItem('sessionToken', data.session.access_token);
-      localStorage.setItem('userEmail', email);
-      setLogInStatus('Logged in!');
+
+      setLogInStatus(true);
       setError('');
+      updateLoginStatus(true);
+      console.log('user logged in!');
     } catch (error) {
       setError(error.message);
-      setLogInStatus('Log In failed!');
       console.log(error.message);
     }
   }
@@ -53,9 +45,9 @@ const LogIn = ({}) => {
         console.log(error.message);
         throw error;
       }
-      localStorage.removeItem('sessionToken');
-      setLogInStatus('');
+      setLogInStatus(false);
       setError('');
+      updateLoginStatus(false);
       console.log('user logged out!');
     } catch (error) {
       setError(error.message);
@@ -75,7 +67,7 @@ const LogIn = ({}) => {
     <div className="flex flex-col justify-center items-center h-[70vh]">
       <div className="flex flex-col justify-center items-center">
         <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[35rem] md:h-[35rem] flex justify-center items-center flex-col p-4 overflow-hidden blackboard font-office_noto">
-          {logInStatus !== 'Logged in!' ? (
+          {!logInStatus ? (
             <>
               <img
                 src={start}
@@ -106,7 +98,6 @@ const LogIn = ({}) => {
                 )}
                 <button
                   type="submit"
-                  disabled={logInStatus === 'Logged in!'}
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
                 >
                   Log in
@@ -127,7 +118,9 @@ const LogIn = ({}) => {
               </button>
               <button
                 className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-1 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
-                onClick={handleLogOut}
+                onClick={() => {
+                  handleLogOut();
+                }}
               >
                 Logout
               </button>

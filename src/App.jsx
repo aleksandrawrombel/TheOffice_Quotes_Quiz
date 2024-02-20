@@ -8,15 +8,32 @@ const App = () => {
   const [logInStatus, setLogInStatus] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
   const [name, setName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
 
   const handleLogInClick = () => {
     setShowLogIn(true);
   };
+
+  const updateLoginStatus = (isLoggedIn) => {
+    setLogInStatus(isLoggedIn);
+  };
+
+  const handleLogOut = () => {
+    setLogInStatus(false);
+    setShowLogIn(true);
+  };
+
   return (
     <>
-      <Header setLogInStatus={setLogInStatus} handleLogInClick={handleLogInClick} />
+      <Header
+        logInStatus={logInStatus}
+        setLogInStatus={setLogInStatus}
+        handleLogInClick={handleLogInClick}
+        setShowLogIn={setShowLogIn}
+        handleLogOut={handleLogOut} 
+      />
       {!showLogIn && <Start setName={setName} />}
-      {showLogIn && <LogIn />}
+      {showLogIn && <LogIn updateLoginStatus={updateLoginStatus} />}
       <Footer />
     </>
   );

@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Start from './components/Start';
 import LogIn from './components/LogIn';
+import './style/main.css';
 
 const App = () => {
   const [logInStatus, setLogInStatus] = useState(false);

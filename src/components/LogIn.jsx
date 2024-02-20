@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Quiz from './Quiz';
-import Start from './Start';
 import start from '../assets/start_giphy.gif';
 import success from '../assets/success_giphy.gif';
 import supabase from './supabase';
@@ -12,13 +10,22 @@ const LogIn = ({ updateLoginStatus }) => {
   // log in status state
   const [logInStatus, setLogInStatus] = useState(false);
   const [error, setError] = useState('');
-  // game start state
-  const [gameStart, setGameStart] = useState(false);
 
   // LOG IN
 
   async function handleLogIn(e) {
     e.preventDefault();
+
+    // EMAIL VALIDATION
+
+    if (!email.trim()) {
+      setError('Enter email address.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Enter valid email address.');
+      return;
+    }
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -26,7 +33,7 @@ const LogIn = ({ updateLoginStatus }) => {
         password,
       });
       if (error) {
-        console.log(error.message);
+        setError(error.message);
         throw error;
       }
 
@@ -46,7 +53,7 @@ const LogIn = ({ updateLoginStatus }) => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
-        console.log(error.message);
+        setError(error.message);
         throw error;
       }
       setLogInStatus(false);
@@ -70,7 +77,7 @@ const LogIn = ({ updateLoginStatus }) => {
                 alt="the office let's do this gif via giphy.com"
                 className="w-48 h-44 md:w-56 md:h-52 m-6"
               />
-              <form className="flex flex-col justify-center items-center" onSubmit={handleLogIn}>
+              <form className="flex flex-col justify-center items-center" onSubmit={handleLogIn} noValidate>
                 <input
                   type="email"
                   value={email}
@@ -89,7 +96,7 @@ const LogIn = ({ updateLoginStatus }) => {
                 ></input>
                 {error && (
                   <span className="text-[0.8rem] p-1 mt-5 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-                    Oh no, there's an error!
+                    {error || "Oh no, there's an error!"}
                   </span>
                 )}
                 <button

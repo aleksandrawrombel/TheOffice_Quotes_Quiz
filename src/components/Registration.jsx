@@ -24,18 +24,13 @@ const Register = ({ score }) => {
   async function handleRegister(e) {
     e.preventDefault();
 
-    // PASSWORD VALIDATION
-    if (password !== confirmPassword) {
-      setError('Password do not match!');
-      return;
-    }
-
     try {
       const { error } = await supabase.auth.signUp({
         email,
         password,
       });
       if (error) {
+        setError(error.message);
         throw error;
       }
       setRegistrationStatus('Registered!');
@@ -49,7 +44,9 @@ const Register = ({ score }) => {
 
   async function insertData() {
     try {
-      const { data, error } = await supabase.from('players').insert([{ email: email, score: score, username: username }]);
+      const { data, error } = await supabase
+        .from('players')
+        .insert([{ email: email, score: score, username: username }]);
       if (error) {
         throw error;
       }
@@ -92,7 +89,7 @@ const Register = ({ score }) => {
               <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center mb-5">
                 Register to join the global leaderboard and compete with the best!
               </p>
-              <form onSubmit={handleRegister} className="flex flex-col">
+              <form onSubmit={handleRegister} className="flex flex-col" noValidate>
                 <input
                   type="email"
                   value={email}
@@ -127,7 +124,7 @@ const Register = ({ score }) => {
                 ></input>
                 {error && (
                   <span className="text-[0.8rem] p-1 m-2 ml-3 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
-                    Oh no, there's an error!
+                    {error || "Oh no, there's an error!"}
                   </span>
                 )}
                 <button
@@ -135,7 +132,9 @@ const Register = ({ score }) => {
                   disabled={registrationStatus === 'Registered!'}
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 m-1 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
                   onClick={() => {
-                    insertData(email, score);
+                    {
+                      insertData(email, score);
+                    }
                   }}
                 >
                   Register

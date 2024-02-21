@@ -5,6 +5,7 @@ import Start from './Start';
 import supabase from './supabase';
 
 const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn }) => {
+  const [currentUser, setCurrentUser] = useState('');
   const handleLogIn = () => {
     setLogInStatus(true);
   };
@@ -26,6 +27,20 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
     }
   }
 
+  // CURRENTLY LOG IN USER
+
+  async function getCurrentUser() {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    console.log(user.email);
+    setCurrentUser(user.email);
+  }
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
   return (
     <>
       <header className="bg-office_gray h-15 m-10 p-3 rounded-full">
@@ -42,13 +57,17 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
                 className="p-3 text-sm w-15 md:w-60 flex justify-center"
                 onClick={() => {
                   handleLogInClick();
+                  getCurrentUser();
                 }}
               >
                 Log in
               </a>
             </li>
           ) : (
-            <>
+            <div className="flex">
+              <li className="border-black border-solid border-2 rounded-full font-semibold mr-1">
+                <div className="p-3 text-sm w-25 md:w-60 flex justify-center">{currentUser}</div>
+              </li>
               <div className="flex justify-center items-center">
                 <button
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-sm w-15 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
@@ -63,7 +82,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
                   />
                 </button>
               </div>
-            </>
+            </div>
           )}
         </ul>
       </header>

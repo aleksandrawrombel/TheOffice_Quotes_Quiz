@@ -75,7 +75,7 @@ const LogIn = ({ updateLoginStatus }) => {
               <img
                 src={start}
                 alt="the office let's do this gif via giphy.com"
-                className="w-48 h-44 md:w-56 md:h-52 m-6"
+                className="w-48 h-44 md:w-56 md:h-52 m-6 rounded-2xl"
               />
               <form className="flex flex-col justify-center items-center" onSubmit={handleLogIn} noValidate>
                 <input
@@ -115,7 +115,7 @@ const LogIn = ({ updateLoginStatus }) => {
               <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
                 Here is your suprise gif gallery, enjoy 😎
               </p>
-              <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6" />
+              <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6 rounded-2xl" />
               <button
                 className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
                 onClick={() => {

@@ -4,6 +4,7 @@ import characters from '../assets/characters';
 import Leaderboard from './Leaderboard';
 import FlyingTarget from './FlyingTarget';
 import '../style/main.css';
+import Michael from '../assets/Michael_Scott_Icon.png';
 
 const Quiz = ({ time, name }) => {
   // quote fetching state
@@ -155,12 +156,29 @@ const Quiz = ({ time, name }) => {
   //RENDER
   return (
     <>
-      {flyingTargetVisible && <FlyingTarget onClick={handleFlyingTargetClick} />}
       {quizFinished ? (
         <Leaderboard score={score} name={name} />
       ) : (
         <>
-          <div className="flex ml-40 md:ml-[60rem]">
+          {lastTenSeconds ? (
+            <>
+              {flyingTargetVisible && <FlyingTarget onClick={handleFlyingTargetClick} />}
+              <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[10rem]">
+                <img src={Michael} alt="Michael Scott" className="w-20 h-20 ml-12 mb-2" />
+                <div className="bubble top">
+                  {flyingTargetVisible
+                    ? 'Catch the Dunder Mifflin logo to get 10 more seconds!'
+                    : "That's what WHO said?!"}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[10rem]">
+              <img src={Michael} alt="Michael Scott" className="w-20 h-20 ml-12 mb-2" />
+              <div className="bubble top">That's what WHO said?!</div>
+            </div>
+          )}
+          <div className="flex ml-40 mt-[10rem] md:-mt-[4rem] md:ml-[60rem]">
             <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[6rem] h-[6rem] flex flex-col justify-center items-center mr-3 md:mr-6">
               <span>Score:</span>
               <span>{score}</span>

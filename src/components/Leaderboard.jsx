@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Register from './Registration';
 import supabase from './supabase';
+import dundie from '../assets/dundie_icon.png';
 
 const Leaderboard = ({ score, name }) => {
   const [registration, setRegistration] = useState(false);
@@ -50,6 +51,16 @@ const Leaderboard = ({ score, name }) => {
         <Register score={score} />
       ) : (
         <>
+          <img
+            src={dundie}
+            alt="dundie award designed by kelsljohnson"
+            className="w-25 md:w-52 h-20 md:h-48 absolute right-[3rem] md:right-[25rem] top-[14rem] md:top-[10rem] animatecss animatecss-heartBeat animatecss-infinite"
+          />
+          <img
+            src={dundie}
+            alt="dundie award designed by kelsljohnson"
+            className="w-25 md:w-52 h-20 md:h-48 absolute left-[3rem] md:left-[25rem] top-[14rem] md:top-[10rem] animatecss animatecss-heartBeat animatecss-infinite"
+          />
           <div className="flex flex-col justify-center items-center">
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center flex-col p-4 mb-5 overflow-hidden blackboard font-office_chalk">
               <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations, ${

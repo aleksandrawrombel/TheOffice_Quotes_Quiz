@@ -24,6 +24,36 @@ const Register = ({ score }) => {
   async function handleRegister(e) {
     e.preventDefault();
 
+    // EMAIL VALIDATION
+
+    if (!email.trim()) {
+      setError('Enter email address.');
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Enter valid email address.');
+      return;
+    }
+
+    // PASSWORD VALIDATION
+
+    if (!password.trim()) {
+      setError('Enter password.');
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
+
+    // USERNAME VALIDATION
+
+    const validUsernameRegex = /^[a-zA-Z0-9]{3,20}$/;
+    if (!validUsernameRegex.test(username)) {
+      setError('Username must be between 3 and 20 characters long, no special characters allowed.');
+      return;
+    }
+
     try {
       const { error } = await supabase.auth.signUp({
         email,
@@ -34,6 +64,7 @@ const Register = ({ score }) => {
         throw error;
       }
       setRegistrationStatus('Registered!');
+      await insertData();
     } catch (error) {
       setError(error.message);
       setRegistrationStatus('Registration failed!');
@@ -131,11 +162,6 @@ const Register = ({ score }) => {
                   type="submit"
                   disabled={registrationStatus === 'Registered!'}
                   className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 m-1 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
-                  onClick={() => {
-                    {
-                      insertData(email, score);
-                    }
-                  }}
                 >
                   Register
                 </button>

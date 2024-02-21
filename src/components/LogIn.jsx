@@ -92,16 +92,16 @@ const LogIn = ({ updateLoginStatus }) => {
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="p-3 m-1 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
+                  className="p-3 mb-6 bg-office_gray border-black border-solid border-2 rounded-full font-semibold text-l w-60 md:flex justify-center text-center focus:outline-4 outline-black"
                 ></input>
                 {error && (
-                  <span className="text-[0.8rem] p-1 mt-5 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
+                  <span className="text-[0.8rem] p-1 m-2 -mt-4 text-red-600 w-[14rem] text-center border-red-800 border-dashed border-2 rounded-full font-semibold">
                     {error || "Oh no, there's an error!"}
                   </span>
                 )}
                 <button
                   type="submit"
-                  className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
+                  className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl"
                 >
                   Log in
                 </button>

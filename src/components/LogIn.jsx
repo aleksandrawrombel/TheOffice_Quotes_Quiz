@@ -66,6 +66,26 @@ const LogIn = ({ updateLoginStatus }) => {
     }
   }
 
+  // // DELETE ACCOUNT
+
+  // async function handleDeleteAccount() {
+  //   const {
+  //     data: { user },
+  //   } = await supabase.auth.getUser();
+  //   console.log(user);
+  //   let userId = user.id;
+
+  //   try {
+  //     const { data, error } = await supabase.from('deletionRequests').insert({ user_id: userId });
+  //     if (error) {
+  //       throw error;
+  //     }
+  //     console.log('Deletion request added successfully:', data);
+  //   } catch (error) {
+  //     console.log('Error adding deletion request:', error.message);
+  //   }
+  // }
+
   return (
     <div className="flex flex-col justify-center items-center h-[70vh]">
       <div className="flex flex-col justify-center items-center">
@@ -112,18 +132,25 @@ const LogIn = ({ updateLoginStatus }) => {
               <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-1">
                 Log in succesful 😎
               </p>
-              <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
-                Here is your suprise gif gallery, enjoy 😎
-              </p>
-              <img src={success} alt="the office party gif via giphy.com" className="w-48 h-44 md:w-56 md:h-52 m-6 rounded-2xl" />
+              <img
+                src={success}
+                alt="the office party gif via giphy.com"
+                className="w-48 h-44 md:w-56 md:h-52 m-6 rounded-2xl"
+              />
               <button
-                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
+                className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 m-6 mb-1 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
                 onClick={() => {
                   handleLogOut();
                 }}
               >
                 Logout
               </button>
+              {/* <button
+                className="bg-office_gray border-red-600 border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:drop-shadow-2xl"
+                onClick={handleDeleteAccount}
+              >
+                Delete account
+              </button> */}
             </div>
           )}
         </div>

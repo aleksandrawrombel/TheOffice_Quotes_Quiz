@@ -8,6 +8,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
   const [currentUser, setCurrentUser] = useState('');
   const handleLogIn = () => {
     setLogInStatus(true);
+    getCurrentUser();
   };
 
   // LOG OUT BUTTON

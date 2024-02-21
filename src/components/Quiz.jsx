@@ -4,7 +4,7 @@ import characters from '../assets/characters';
 import Leaderboard from './Leaderboard';
 import FlyingTarget from './FlyingTarget';
 import '../style/main.css';
-import Michael from '../assets/Michael_Scott_Icon.png';
+import Michael from '../assets/Michael_Icon.png';
 
 const Quiz = ({ time, name }) => {
   // quote fetching state
@@ -164,7 +164,7 @@ const Quiz = ({ time, name }) => {
             <>
               {flyingTargetVisible && <FlyingTarget onClick={handleFlyingTargetClick} />}
               <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[10rem]">
-                <img src={Michael} alt="Michael Scott" className="w-20 h-20 ml-12 mb-2" />
+                <img src={Michael} alt="Michael Scott by marisajlivingston" className="w-20 h-20 ml-12 mb-2" />
                 <div className="bubble top">
                   {flyingTargetVisible
                     ? 'Catch the Dunder Mifflin logo to get 10 more seconds!'
@@ -174,7 +174,7 @@ const Quiz = ({ time, name }) => {
             </>
           ) : (
             <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[10rem]">
-              <img src={Michael} alt="Michael Scott" className="w-20 h-20 ml-12 mb-2" />
+              <img src={Michael} alt="Michael Scott by marisajlivingston" className="w-20 h-20 ml-12 mb-2" />
               <div className="bubble top">That's what WHO said?!</div>
             </div>
           )}

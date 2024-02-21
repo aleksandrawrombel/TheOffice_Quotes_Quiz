@@ -31,7 +31,7 @@ const App = () => {
         setLogInStatus={setLogInStatus}
         handleLogInClick={handleLogInClick}
         setShowLogIn={setShowLogIn}
-        handleLogOut={handleLogOut} 
+        handleLogOut={handleLogOut}
       />
       {!showLogIn && <Start setName={setName} />}
       {showLogIn && <LogIn updateLoginStatus={updateLoginStatus} />}

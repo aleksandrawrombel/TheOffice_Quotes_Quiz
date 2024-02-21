@@ -1,0 +1,24 @@
+import Andy from './Andy_Icon.png';
+import Angela from './Angela_Icon.png';
+import Creed from './Creed_Icon.png';
+import Darryl from './Darryl_Icon.png';
+import David from './David_Icon.png';
+import Dwight from './Dwight_Icon.png';
+import Erin from './Erin_Icon.png';
+import Gabe from './Gabe_Icon.png';
+import Holly from './Holly_Icon.png';
+import Jan from './Jan_Icon.png';
+import Jim from './Jim_Icon.png';
+import Kelly from './Kelly_Icon.png';
+import Kevin from './Kevin_Icon.png';
+import Meredith from './Meredith_Icon.png';
+import Michael from './Michael_Icon.png';
+import Oscar from './Oscar_Icon.png';
+import Pam from './Pam_Icon.png';
+import Phyllis from './Phyllis_Icon.png';
+import Roy from './Roy_Icon.png';
+import Ryan from './Ryan_Icon.png';
+import Stanley from './Stanley_Icon.png';
+
+const charactersIcons = [Andy, Angela, Creed, Darryl, David, Dwight, Erin, Gabe, Holly, Jan, Jim, Kelly, Kevin, Meredith, Michael, Oscar, Pam, Phyllis, Roy, Ryan, Stanley];
+export default charactersIcons;

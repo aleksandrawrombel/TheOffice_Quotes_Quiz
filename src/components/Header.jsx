@@ -17,14 +17,14 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
     try {
       const { error } = await supabase.auth.signOut();
       if (error) {
-        console.log(error.message);
+        // console.log(error.message);
         throw error;
       }
       setLogInStatus(false);
       setShowLogIn(false);
-      console.log('user logged out!');
+      // console.log('user logged out!');
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 
@@ -36,9 +36,9 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
       error,
     } = await supabase.auth.getUser();
     if (error) {
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(user.email);
+      // console.log(user.email);
       setCurrentUser(user.email);
     }
   }

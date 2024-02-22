@@ -81,9 +81,9 @@ const Register = ({ score }) => {
       if (error) {
         throw error;
       }
-      console.log('success, email and score and username entered players table', data);
+      // console.log('success, email and score and username entered players table', data);
     } catch (error) {
-      console.log('error: email and scor and username did not enter players table', error.message);
+      // console.log('error: email and scor and username did not enter players table', error.message);
     }
   }
 

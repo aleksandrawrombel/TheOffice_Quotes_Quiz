@@ -43,10 +43,10 @@ const LogIn = ({ updateLoginStatus }) => {
       setLogInStatus(true);
       setError('');
       updateLoginStatus(true);
-      console.log('user logged in!');
+      // console.log('user logged in!');
     } catch (error) {
       setError(error.message);
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 
@@ -63,10 +63,10 @@ const LogIn = ({ updateLoginStatus }) => {
       setShowQuiz(false);
       setError('');
       updateLoginStatus(false);
-      console.log('user logged out!');
+      // console.log('user logged out!');
     } catch (error) {
       setError(error.message);
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 

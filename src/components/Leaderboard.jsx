@@ -24,7 +24,7 @@ const Leaderboard = ({ score, name }) => {
         .limit(10);
 
       if (error) {
-        console.log(error.message);
+        // console.log(error.message);
         throw error;
       }
 
@@ -34,10 +34,10 @@ const Leaderboard = ({ score, name }) => {
       }));
 
       setLeaderboardData(leaderboardData);
-      console.log(data);
+      // console.log(data);
       checkCurrentUser();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
     }
   }
 
@@ -61,10 +61,10 @@ const Leaderboard = ({ score, name }) => {
     } = await supabase.auth.getUser();
     if (error) {
       setLoggedInUser(false);
-      console.log(user);
+      // console.log(user);
     } else {
       setLoggedInUser(true);
-      console.log(user);
+      // console.log(user);
     }
   }
 

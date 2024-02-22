@@ -42,7 +42,7 @@ const Quiz = ({ time, name }) => {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response && response.quote.length <= 200) {
           setQuote(response);
           createIncorrectOptions(response.character);
@@ -51,7 +51,7 @@ const Quiz = ({ time, name }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -164,9 +164,9 @@ const Quiz = ({ time, name }) => {
       error,
     } = await supabase.auth.getUser();
     if (error) {
-      console.log(error);
+      // console.log(error);
     } else {
-      console.log(user.email);
+      // console.log(user.email);
       setCurrentUser(user.email);
     }
   }
@@ -197,7 +197,7 @@ const Quiz = ({ time, name }) => {
           throw updateError;
         }
 
-        console.log('Score updated for existing player:', updatedPlayer);
+        // console.log('Score updated for existing player:', updatedPlayer);
       } else {
         const { data, error } = await supabase.from('players').insert([{ email: currentUser, score: score, username: username }]);
 
@@ -205,10 +205,10 @@ const Quiz = ({ time, name }) => {
           throw error;
         }
 
-        console.log('Success: Email and score inserted into players table', data);
+        // console.log('Success: Email and score inserted into players table', data);
       }
     } catch (error) {
-      console.error('Error inserting/updating data in players table:', error.message);
+      // console.log('Error inserting/updating data in players table:', error.message);
     }
   }
 

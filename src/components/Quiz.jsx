@@ -199,7 +199,9 @@ const Quiz = ({ time, name }) => {
 
         // console.log('Score updated for existing player:', updatedPlayer);
       } else {
-        const { data, error } = await supabase.from('players').insert([{ email: currentUser, score: score, username: username }]);
+        const { data, error } = await supabase
+          .from('players')
+          .insert([{ email: currentUser, score: score, username: username }]);
 
         if (error) {
           throw error;
@@ -208,7 +210,7 @@ const Quiz = ({ time, name }) => {
         // console.log('Success: Email and score inserted into players table', data);
       }
     } catch (error) {
-      // console.log('Error inserting/updating data in players table:', error.message);
+      // console.error('Error inserting/updating data in players table:', error.message);
     }
   }
 
@@ -222,8 +224,12 @@ const Quiz = ({ time, name }) => {
           {lastTenSeconds ? (
             <>
               {flyingTargetVisible && <FlyingTarget onClick={handleFlyingTargetClick} />}
-              <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[12rem]">
-                <img src={Michael} alt="Michael Scott by marisajlivingston" className="w-20 h-20 ml-12 mb-2" />
+              <div className="absolute left-1 top-[5rem] md:left-[12rem] md:top-[10rem]">
+                <img
+                  src={Michael}
+                  alt="Michael Scott by marisajlivingston"
+                  className="m-10 h-10 md:w-20 md:h-20 ml-12 mb-2"
+                />
                 <div className="bubble top">
                   {flyingTargetVisible
                     ? 'Catch the Dunder Mifflin logo to get 10 more seconds!'
@@ -232,18 +238,22 @@ const Quiz = ({ time, name }) => {
               </div>
             </>
           ) : (
-            <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[12rem]">
-              <img src={Michael} alt="Michael Scott by marisajlivingston" className="w-20 h-20 ml-12 mb-2" />
+            <div className="absolute left-1 top-[5rem] md:left-[12rem] md:top-[10rem]">
+              <img
+                src={Michael}
+                alt="Michael Scott by marisajlivingston"
+                className="m-10 h-10 md:w-20 md:h-20 ml-12 mb-2"
+              />
               <div className="bubble top">That's what WHO said?!</div>
             </div>
           )}
-          <div className="flex ml-40 mt-[10rem] md:-mt-[4rem] md:ml-[60rem]">
-            <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[6rem] h-[6rem] flex flex-col justify-center items-center mr-3 md:mr-6">
+          <div className="flex ml-40 mt-[7.7rem] md:-mt-[4rem] md:ml-[60rem]">
+            <div className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] flex flex-col justify-center items-center mr-3 md:mr-6">
               <span>Score:</span>
               <span>{score}</span>
             </div>
             <div
-              className={`bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[6rem] h-[6rem] flex flex-col justify-center items-center mb-6 ${
+              className={`bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-[5rem] h-[5rem] md:w-[6rem] md:h-[6rem] flex flex-col justify-center items-center mb-6 ${
                 lastTenSeconds ? 'pulse-red' : ''
               }`}
             >
@@ -252,7 +262,7 @@ const Quiz = ({ time, name }) => {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
+            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[15rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
               <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk">
                 {quote.quote}
               </h1>
@@ -263,7 +273,7 @@ const Quiz = ({ time, name }) => {
               <button
                 key={index}
                 type="submit"
-                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer hover:scale-105 ${
+                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-1 md:m-3 cursor-pointer hover:scale-105 ${
                   buttonAnimations[index] ? 'tada' : ''
                 }`}
                 onClick={() => {
@@ -281,7 +291,7 @@ const Quiz = ({ time, name }) => {
               <button
                 key={index}
                 type="submit"
-                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-3 cursor-pointer hover:scale-105 ${
+                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-1 md:m-3 cursor-pointer hover:scale-105 ${
                   buttonAnimations[index + 2] ? 'tada' : ''
                 }`}
                 onClick={() => {

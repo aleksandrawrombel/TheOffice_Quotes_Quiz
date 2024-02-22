@@ -37,11 +37,11 @@ const Start = ({ setName }) => {
           ))}
         </div>
       )}
-      <main className="flex flex-col justify-center items-center h-[70vh]">
+      <main className="flex flex-col justify-center items-center h-[65vh] md:h-[70vh]">
         {!gameStarted && !loading && (
           <>
-            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[25rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-between items-center p-4 z-20">
-              <h1 className="text-white text-[1.75rem] md:text-[3rem]">The Office Quotes Quiz</h1>
+            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[15rem] md:h-[15rem] bg-black flex justify-between items-center p-4 z-20">
+              <h1 className="text-white text-[1.2rem] md:text-[3rem]">The Office Quotes Quiz</h1>
               <img src={theOffice_logo} alt="The Office logo" className="w-48 md:w-52 h-48 md:h-52" />
             </div>
             <form className="flex flex-col justify-center items-center h-[13rem]" noValidate>
@@ -64,7 +64,7 @@ const Start = ({ setName }) => {
           </>
         )}
         {loading && <Loading />}
-        {gameStarted && <Quiz time={15} name={inputName} />}
+        {gameStarted && <Quiz time={29} name={inputName} />}
       </main>
     </>
   );

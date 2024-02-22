@@ -69,7 +69,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
             </li>
           ) : (
             <div className="flex">
-              <li className="border-black border-solid border-2 rounded-full font-semibold mr-1">
+              <li className="hidden md:flex md:border-black md:border-solid md:border-2 md:rounded-full md:font-semibold md:mr-1">
                 <div className="p-3 text-sm w-25 md:w-60 flex justify-center">{currentUser}</div>
               </li>
               <div className="flex justify-center items-center">

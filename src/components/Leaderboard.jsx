@@ -90,7 +90,7 @@ const Leaderboard = ({ score, name }) => {
               <img
                 src={dundie}
                 alt="dundie award designed by kelsljohnson"
-                className="w-25 md:w-52 h-20 md:h-48 absolute right-[2.5rem] md:right-[34rem] top-[14rem] md:top-[10rem] animate-bounce"
+                className="w-25 md:w-52 h-20 md:h-48 absolute right-[0.2rem] md:right-[34rem] top-[12rem] md:top-[10rem] animate-bounce"
               />
               <div className="flex flex-col justify-center items-center">
                 <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center flex-col p-4 mb-5 overflow-hidden blackboard font-office_chalk">
@@ -107,7 +107,7 @@ const Leaderboard = ({ score, name }) => {
                       className="w-5 md:w-7 md:mt-1 hover:scale-125 active:scale-105"
                     />
                   </span>
-                  <table className="border-separate border-spacing-x-[1rem] md:border-spacing-x-[5rem]">
+                  <table className="border-separate border-spacing-x-[1.8rem] md:border-spacing-x-[5rem]">
                     <thead className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed text-center font-office_chalk">
                       <tr>
                         <th>Rank</th>

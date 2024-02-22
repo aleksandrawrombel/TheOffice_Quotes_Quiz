@@ -76,7 +76,7 @@ const LogIn = ({ updateLoginStatus }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-[70vh]">
+    <div className="flex flex-col justify-center items-center h-[65vh] md:h-[70vh]">
       {!showQuiz && (
         <div className="flex flex-col justify-center items-center">
           <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[35rem] md:h-[35rem] flex justify-center items-center flex-col p-4 overflow-hidden blackboard font-office_noto">
@@ -118,7 +118,7 @@ const LogIn = ({ updateLoginStatus }) => {
                 </form>
               </>
             ) : (
-              <div className="flex flex-col justify-center items-center h-[14rem]">
+              <div className="flex flex-col justify-center items-center h-[10rem] md:h-[14rem]">
                 <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-1">
                   Log in succesful 😎
                 </p>
@@ -146,7 +146,7 @@ const LogIn = ({ updateLoginStatus }) => {
           </div>
         </div>
       )}
-      {showQuiz && <Quiz time={15} />}
+      {showQuiz && <Quiz time={29} />}
     </div>
   );
 };

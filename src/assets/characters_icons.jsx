@@ -20,5 +20,5 @@ import Roy from './Roy_Icon.png';
 import Ryan from './Ryan_Icon.png';
 import Stanley from './Stanley_Icon.png';
 
-const charactersIcons = [Andy, Angela, Creed, Darryl, David, Dwight, Erin, Gabe, Holly, Jan, Jim, Kelly, Kevin, Meredith, Michael, Oscar, Pam, Phyllis, Roy, Ryan, Stanley];
+const charactersIcons = [Angela, Creed, Dwight, Erin, Gabe, Jan, Jim, Kelly, Kevin, Meredith, Michael, Oscar, Pam, Phyllis, Ryan, Stanley];
 export default charactersIcons;

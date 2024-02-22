@@ -3,7 +3,7 @@ import theOffice_logo from '../assets/theOffice_logo.png';
 import Loading from './Loading';
 import Quiz from './Quiz';
 import charactersIcons from '../assets/characters_icons';
-import '../style/main.css';
+import '../style/main.css'; 
 
 const Start = ({ setName }) => {
   // username state

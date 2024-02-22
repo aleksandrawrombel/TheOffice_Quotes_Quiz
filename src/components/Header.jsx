@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import '../style/main.css';
 import logout_icon from '../assets/logout_icon.svg';
-import Start from './Start';
 import supabase from './supabase';
 
 const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn }) => {
+   // currently logged in user state
   const [currentUser, setCurrentUser] = useState('');
+  
   const handleLogIn = () => {
     setLogInStatus(true);
   };

@@ -5,6 +5,7 @@ import Leaderboard from './Leaderboard';
 import FlyingTarget from './FlyingTarget';
 import '../style/main.css';
 import Michael from '../assets/Michael_Icon.png';
+import supabase from './supabase';
 
 const Quiz = ({ time, name }) => {
   // quote fetching state
@@ -24,6 +25,8 @@ const Quiz = ({ time, name }) => {
   const [buttonAnimations, setButtonAnimations] = useState([false, false, false, false]);
   // flying target state
   const [flyingTargetVisible, setFlyingTargetVisible] = useState(true);
+  // currently logged in user state
+  const [currentUser, setCurrentUser] = useState('');
 
   // FETCHING THE QUOTE
 
@@ -153,11 +156,67 @@ const Quiz = ({ time, name }) => {
     setFlyingTargetVisible(false);
   };
 
+  // CURRENTLY LOGGED IN USER
+
+  async function getCurrentUser() {
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(user.email);
+      setCurrentUser(user.email);
+    }
+  }
+
+  getCurrentUser();
+
+  // INSERT EMAIL AND SCORE TO PLAYERS TABLE IN SUPABASE
+
+  async function insertData() {
+    try {
+      const { data: existingPlayers, error: fetchError } = await supabase
+        .from('players')
+        .select()
+        .eq('email', currentUser);
+
+      if (fetchError) {
+        throw fetchError;
+      }
+      if (existingPlayers && existingPlayers.length > 0) {
+        const playerId = existingPlayers[0].player_id;
+
+        const { data: updatedPlayer, error: updateError } = await supabase
+          .from('players')
+          .update({ score: score })
+          .eq('player_id', playerId);
+
+        if (updateError) {
+          throw updateError;
+        }
+
+        console.log('Score updated for existing player:', updatedPlayer);
+      } else {
+        const { data, error } = await supabase.from('players').insert([{ email: currentUser, score: score, username: username }]);
+
+        if (error) {
+          throw error;
+        }
+
+        console.log('Success: Email and score inserted into players table', data);
+      }
+    } catch (error) {
+      console.error('Error inserting/updating data in players table:', error.message);
+    }
+  }
+
   //RENDER
   return (
     <>
       {quizFinished ? (
-        <Leaderboard score={score} name={name} />
+        (insertData(), (<Leaderboard score={score} name={name} />))
       ) : (
         <>
           {lastTenSeconds ? (

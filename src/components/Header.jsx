@@ -89,7 +89,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
             </div>
           )}
         </ul>
-      </header>
+      </header> 
     </>
   );
 };

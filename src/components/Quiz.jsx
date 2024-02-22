@@ -262,7 +262,7 @@ const Quiz = ({ time, name }) => {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center">
-            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[15rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
+            <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[13rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
               <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk">
                 {quote.quote}
               </h1>
@@ -273,7 +273,7 @@ const Quiz = ({ time, name }) => {
               <button
                 key={index}
                 type="submit"
-                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-1 md:m-3 cursor-pointer hover:scale-105 ${
+                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-[0.1rem] md:m-3 cursor-pointer hover:scale-105 ${
                   buttonAnimations[index] ? 'tada' : ''
                 }`}
                 onClick={() => {
@@ -291,7 +291,7 @@ const Quiz = ({ time, name }) => {
               <button
                 key={index}
                 type="submit"
-                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-1 md:m-3 cursor-pointer hover:scale-105 ${
+                className={`border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-40 md:w-60 hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out m-[0.1rem] md:m-3 cursor-pointer hover:scale-105 ${
                   buttonAnimations[index + 2] ? 'tada' : ''
                 }`}
                 onClick={() => {

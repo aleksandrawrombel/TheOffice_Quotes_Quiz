@@ -42,9 +42,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
     }
   }
 
-  useEffect(() => {
-    getCurrentUser();
-  }, []);
+  getCurrentUser();
 
   return (
     <>

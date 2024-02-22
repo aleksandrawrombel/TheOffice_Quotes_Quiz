@@ -3,7 +3,7 @@ import theOffice_logo from '../assets/theOffice_logo.png';
 import Loading from './Loading';
 import Quiz from './Quiz';
 import charactersIcons from '../assets/characters_icons';
-import '../style/main.css'; 
+import '../style/main.css';
 
 const Start = ({ setName }) => {
   // username state
@@ -28,15 +28,15 @@ const Start = ({ setName }) => {
 
   return (
     <>
-    {!gameStarted && !loading && (
-      <div className="snowflake">
-        {charactersIcons.map((icon, index) => (
-          <div className="snowflake" key={index}>
-            <img className=" w-10 h-10 md:w-20 md:h-20" src={icon} alt="character icon" />
-          </div>
-        ))}
-      </div>
-    )}
+      {!gameStarted && !loading && (
+        <div className="snowflake">
+          {charactersIcons.map((icon, index) => (
+            <div className="snowflake" key={index}>
+              <img className=" w-10 h-10 md:w-20 md:h-20" src={icon} alt="character icon" />
+            </div>
+          ))}
+        </div>
+      )}
       <main className="flex flex-col justify-center items-center h-[70vh]">
         {!gameStarted && !loading && (
           <>
@@ -54,7 +54,7 @@ const Start = ({ setName }) => {
               {inputName && (
                 <button
                   type="submit"
-                  className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-64 md:w-80 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse hover:scale-105 hover:drop-shadow-2xl"
+                  className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-64 md:w-80 md:flex justify-center hover:bg-office_button hover:shadow-lg transition duration-300 ease-in-out animate-pulse hover:scale-105 hover:drop-shadow-2xl z-20"
                   onClick={handleGameStart}
                 >
                   Start

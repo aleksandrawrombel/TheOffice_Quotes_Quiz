@@ -163,7 +163,7 @@ const Quiz = ({ time, name }) => {
           {lastTenSeconds ? (
             <>
               {flyingTargetVisible && <FlyingTarget onClick={handleFlyingTargetClick} />}
-              <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[12rem]">
+              <div className="absolute left-2 top-[8rem] md:left-[12rem] md:top-[10rem]">
                 <img src={Michael} alt="Michael Scott by marisajlivingston" className="w-20 h-20 ml-12 mb-2" />
                 <div className="bubble top">
                   {flyingTargetVisible

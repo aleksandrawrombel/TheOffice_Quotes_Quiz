@@ -8,7 +8,6 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
   const [currentUser, setCurrentUser] = useState('');
   const handleLogIn = () => {
     setLogInStatus(true);
-    getCurrentUser();
   };
 
   // LOG OUT BUTTON
@@ -28,14 +27,19 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
     }
   }
 
-  // CURRENTLY LOG IN USER
+  // CURRENTLY LOGGED IN USER
 
   async function getCurrentUser() {
     const {
       data: { user },
+      error,
     } = await supabase.auth.getUser();
-    console.log(user.email);
-    setCurrentUser(user.email);
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(user.email);
+      setCurrentUser(user.email);
+    }
   }
 
   useEffect(() => {

@@ -170,7 +170,7 @@ const Register = ({ score }) => {
           ) : (
             <div className="flex flex-col justify-center items-center">
               <p className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk text-center m-6">
-                Registration succesful 😎
+                Registration succesful 😎 Please log in 👆😌👆
               </p>
               <img
                 src={success}

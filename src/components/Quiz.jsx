@@ -32,7 +32,8 @@ const Quiz = ({ time, name }) => {
 
   useEffect(() => {
     fetchQuote();
-  }, []);
+    getCurrentUser();
+  }, [currentUser]);
 
   // fetch a random quote, max 200 characters long
 
@@ -171,7 +172,7 @@ const Quiz = ({ time, name }) => {
     }
   }
 
-  getCurrentUser();
+  // getCurrentUser();
 
   // INSERT EMAIL AND SCORE TO PLAYERS TABLE IN SUPABASE
 

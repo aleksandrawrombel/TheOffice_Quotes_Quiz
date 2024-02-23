@@ -177,12 +177,12 @@ const Register = ({ score }) => {
                 alt="the office party gif via giphy.com"
                 className="w-48 h-44 md:w-56 md:h-52 m-6 rounded-2xl"
               />
-              <button
+              {/* <button
                 className="bg-office_gray border-black border-solid border-2 rounded-full font-semibold p-3 text-l w-60 md:flex justify-center rainbow hover:scale-105 hover:drop-shadow-2xl m-6"
                 onClick={handleshowLeaderboard}
               >
                 Show leaderboard
-              </button>
+              </button> */}
             </div>
           )}
         </div>

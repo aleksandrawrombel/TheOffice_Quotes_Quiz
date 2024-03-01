@@ -4,9 +4,9 @@ import logout_icon from '../assets/logout_icon.svg';
 import supabase from './supabase';
 
 const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn }) => {
-   // currently logged in user state
+  // currently logged in user state
   const [currentUser, setCurrentUser] = useState('');
-  
+
   const handleLogIn = () => {
     setLogInStatus(true);
   };
@@ -43,7 +43,11 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
     }
   }
 
-  getCurrentUser();
+  // getCurrentUser();
+
+  useEffect(() => {
+    getCurrentUser();
+  });
 
   return (
     <>
@@ -89,7 +93,7 @@ const Header = ({ setLogInStatus, handleLogInClick, logInStatus, setShowLogIn })
             </div>
           )}
         </ul>
-      </header> 
+      </header>
     </>
   );
 };

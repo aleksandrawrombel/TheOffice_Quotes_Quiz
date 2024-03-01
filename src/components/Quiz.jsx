@@ -33,7 +33,7 @@ const Quiz = ({ time, name }) => {
   useEffect(() => {
     fetchQuote();
     getCurrentUser();
-  }, [currentUser]);
+  }, []);
 
   // fetch a random quote, max 200 characters long
 

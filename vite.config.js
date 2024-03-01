@@ -7,10 +7,8 @@ export default defineConfig({
   plugins: [react()],
   css: {
     postcss: {
-      plugins: [
-        tailwindcss,
-        autoprefixer,
-      ],
+      plugins: [tailwindcss, autoprefixer],
     },
   },
+  test: { environment: 'jsdom', globals: true, setupFiles: './tests/setup.js' },
 });

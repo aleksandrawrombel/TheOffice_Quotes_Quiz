@@ -264,7 +264,8 @@ const Quiz = ({ time, name }) => {
           </div>
           <div className="flex flex-col justify-center items-center">
             <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[13rem] md:h-[15rem] flex justify-center items-center p-4 mb-5 overflow-hidden blackboard">
-              <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk">
+              <h1 className="text-white text-[1rem] md:text-[1.5rem] leading-relaxed font-office_chalk"
+              data-testid="quote">
                 {quote.quote}
               </h1>
             </div>

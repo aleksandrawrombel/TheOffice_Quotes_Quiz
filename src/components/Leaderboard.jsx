@@ -94,7 +94,7 @@ const Leaderboard = ({ score, name }) => {
               />
               <div className="flex flex-col justify-center items-center">
                 <div className="border-white border-solid border-2 rounded-xl font-semibold w-[20rem] md:w-[40rem] h-[5rem] md:h-[5rem] flex justify-center items-center flex-col p-4 mb-5 overflow-hidden blackboard font-office_chalk">
-                  <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`Congratulations ${
+                  <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed" data-testid="name">{`Congratulations ${
                     name || 'to you'
                   }!`}</p>
                   <p className="text-white text-[1rem] md:text-[1.2rem] leading-relaxed">{`You scored ${score} points!`}</p>
@@ -148,7 +148,7 @@ const Leaderboard = ({ score, name }) => {
               </div>
             </>
           )}
-          {showQuiz && <Quiz time={15} />}
+          {showQuiz && <Quiz time={29} />}
         </>
       )}
     </>

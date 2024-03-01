@@ -3,7 +3,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import Quiz from '../src/components/Quiz';
 
-describe('Quiz', () => {
+describe('Quiz elements display', () => {
   it('should display Score, Timer and Quote', async () => {
     const { getByText, getByTestId } = render(<Quiz time={29} name="User" />);
 

@@ -219,7 +219,7 @@ const Quiz = ({ time, name }) => {
   return (
     <>
       {quizFinished ? (
-        (insertData(), (<Leaderboard score={score} name={name} />))
+        (insertData(), (<Leaderboard score={score} name={name}/>))
       ) : (
         <>
           {lastTenSeconds ? (

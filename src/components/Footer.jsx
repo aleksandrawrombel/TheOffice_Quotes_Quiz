@@ -11,7 +11,7 @@ const Footer = () => {
             target="_blank"
             className="p-3 text-sm w-25 md:w-60 hidden md:flex justify-center"
           >
-            Check the code on Github!
+            Check the code on GitHub!
           </a>
           <a
             href="https://github.com/aleksandrawrombel/TheOffice_Quotes_Quiz"

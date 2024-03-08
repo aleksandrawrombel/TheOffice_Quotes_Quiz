@@ -148,7 +148,7 @@ const Leaderboard = ({ score, name }) => {
               </div>
             </>
           )}
-          {showQuiz && <Quiz time={29} />}
+          {showQuiz && <Quiz time={59} />}
         </>
       )}
     </>

@@ -146,7 +146,7 @@ const LogIn = ({ updateLoginStatus }) => {
           </div>
         </div>
       )}
-      {showQuiz && <Quiz time={29} />}
+      {showQuiz && <Quiz time={59} />}
     </div>
   );
 };

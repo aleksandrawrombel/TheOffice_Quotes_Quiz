@@ -488,7 +488,7 @@ body {
 
 .snowflake {
   position: fixed;
-  top: -10%;
+  top: -12%;
   z-index: 1;
   pointer-events: none;
   animation-delay: 0s;
